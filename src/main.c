@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:11:52 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/05 14:30:23 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:08:13 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-		ft_error_exit(ARG_NBR_MSG, 1);
-	ft_printf("map is %s\n", argv[1]);
+	t_map map;
+	
+	ft_parse_map(&map, argc, argv);
 	return (0);
 }
