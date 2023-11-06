@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/05 18:49:23 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:05:11 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_map
 {
 	int		ceiling_color;
 	int		floor_color;
-	char	**map;
+	char	**map_array;
 	int		rows;
 	char	*text_paths[4];
 }	t_map;
@@ -29,6 +29,10 @@ typedef struct s_map
 # define FILE_ERR_MSG "Error\nCouldn't open file"
 # define MEM_ERR_MSG "Error\nCouldn't allocate memory"
 # define INV_MAP_MSG "Error\nInvalid map file"
+# define INV_CLR_MSG "Error\nInvalid map colors"
+# define NOT_ENOUGH_ATTR "Error\nInvalid map attributes"
+# define VLID_CHARS "01NSEW"
+# define PLAYER_CHARS "NSEW"
 # define NO 0
 # define SO 1
 # define WE 2
