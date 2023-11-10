@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/05 18:40:55 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:59:04 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft.h"
+# include "mlx.h"
 # include "cub3D_defines.h"
+
+//draw.c
+
+int	render(t_cub *cub);
 
 //parser.c
 

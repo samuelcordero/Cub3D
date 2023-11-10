@@ -3,6 +3,7 @@ LDFLAGS = -L libft -lft -lm
 NAME = cub3D
 CFLAGS = -Wall -Wextra -Werror -O3 -Ilibft -Iinc
 SRC = src/main.c \
+	  src/draw.c \
 	  src/parser.c \
 	  src/utils.c
 OBJ = $(SRC:.c=.o)

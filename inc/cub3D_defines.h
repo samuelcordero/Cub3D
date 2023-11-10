@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/06 14:05:11 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:33:41 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ typedef struct s_map
 	int		rows;
 	char	*text_paths[4];
 }	t_map;
+
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
+typedef struct s_cub
+{
+	struct s_map	map;
+	void			*mlx;
+	void			*win_ptr;
+	t_img			win_img;
+}	t_cub;
 
 //ERROR MESSAGES
 # define ARG_NBR_MSG "Error\nInvalid args, arg should be ONE .cub map"
