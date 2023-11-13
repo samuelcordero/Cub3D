@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:40:55 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/10 13:08:18 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:52:40 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,16 @@ static void	ft_check_map(t_map *map)
 			if (map->map_array[i][j] != ' ' && !ft_strchr(VLID_CHARS, map->map_array[i][j]))
 				ft_error_exit(INV_MAP_MSG, 1);
 			if (ft_strchr(PLAYER_CHARS, map->map_array[i][j]))
+			{
+				map->cam.x = (double) (i + 1);
+				map->cam.y= (double) (j + 1);
+				map->cam.dir_x = -1;
+				map->cam.dir_y = 0;
+				map->cam.plane_x = 0;
+				map->cam.plane_y = 0.66;
+				map->map_array[i][j] = '0';
 				++ctr;
+			}
 		}
 	}
 	if (ctr != 1)

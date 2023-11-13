@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:11:52 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/10 12:53:06 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:39:33 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	cub.win_img.addr = mlx_get_data_addr(cub.win_img.mlx_img, &cub.win_img.bpp, &cub.win_img.line_len, &cub.win_img.endian);
 	mlx_loop_hook(cub.mlx, &render, &cub);
+	mlx_hook(cub.win_ptr, 17, 0, &hook_exit, &cub);
+	mlx_hook(cub.win_ptr, 2, 1, &ft_input_hook, &cub);
 	mlx_loop(cub.mlx);
 	free(cub.mlx);
 	return (0);

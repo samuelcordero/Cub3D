@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/10 13:04:25 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:40:05 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
 		i -= 8;
 	}
+}
+
+void	img_ver_line(t_img *img, int x, int y1, int y2, int color)
+{
+	int	y;
+
+	y = y1 - 1;
+	while (++y < y2)
+		img_pix_put(img, x, y, color);
 }
 
 static void	render_horizon(t_cub *cub)
@@ -56,6 +65,7 @@ static void	render_horizon(t_cub *cub)
 int	render(t_cub *cub)
 {
 	render_horizon(cub);
+	raycast(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
 			cub->win_img.mlx_img, 0, 0);
 	return (0);
