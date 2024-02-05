@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/13 19:36:12 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:45:20 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #  define ESCAPE 65307
 #  define ROTATE_LEFT 101
 #  define ROTATE_RIGHT 113
-#  define MOVE_UP 119
-#  define MOVE_DOWN 115
+#  define MOVE_FW 119
+#  define MOVE_BK 115
 #  define MOVE_LEFT 97
 #  define MOVE_RIGHT 100
 #  define ZOOM_OUT 120
@@ -36,8 +36,8 @@
 #  define ESCAPE 53
 #  define ROTATE_LEFT 14
 #  define ROTATE_RIGHT 12
-#  define MOVE_UP 13
-#  define MOVE_DOWN 1
+#  define MOVE_FW 13
+#  define MOVE_BK 1
 #  define MOVE_LEFT 0
 #  define MOVE_RIGHT 2
 #  define ZOOM_OUT 7
@@ -67,6 +67,8 @@ typedef struct s_cam
 	double	plane_y;
 	double	dir_x;
 	double	dir_y;
+	double	oldDirX;
+	double	oldPlaneX;
 }	t_cam;
 
 typedef struct s_map

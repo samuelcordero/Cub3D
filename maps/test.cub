@@ -3,7 +3,7 @@ SO ./ruta_a_la_textura_sur
 WE ./ruta_a_la_textura_oeste
 EA ./ruta_a_la_textura_este
 
-F 255,0,0
+F 255,255,0
 C 0,0,255
 
 
