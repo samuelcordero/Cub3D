@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/13 19:40:05 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:34:31 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ static void	render_horizon(t_cub *cub)
 
 int	render(t_cub *cub)
 {
+	t_raycast ray;
 	render_horizon(cub);
-	raycast(cub);
+	raycast(cub, &ray);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
 			cub->win_img.mlx_img, 0, 0);
 	return (0);
