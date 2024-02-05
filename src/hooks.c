@@ -6,7 +6,7 @@
 /*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:29:48 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 17:10:49 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:30:16 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,17 @@ void	ft_keyhooks(int keycode, t_cub *cub)
 {
 	if (keycode == MOVE_FW)
 	{
-		cub->map.cam.x += cub->map.cam.dir_x * 0.1;
-		cub->map.cam.y += cub->map.cam.dir_y * 0.1;
+		if (cub->map.map_array[(int)(cub->map.cam.x + cub->map.cam.dir_x * SPEED)][(int)cub->map.cam.y] != '1')
+			cub->map.cam.x += cub->map.cam.dir_x * SPEED;
+		if (cub->map.map_array[(int)cub->map.cam.x][(int)(cub->map.cam.y + cub->map.cam.dir_y * SPEED)] != '1')
+			cub->map.cam.y += cub->map.cam.dir_y * SPEED;
 	}
 	else if (keycode == MOVE_BK)
 	{
-		cub->map.cam.x -= cub->map.cam.dir_x * 0.1;
-		cub->map.cam.y -= cub->map.cam.dir_y * 0.1;
-	}
-	else if (keycode == MOVE_LEFT)
-	{
-		cub->map.cam.x += cub->map.cam.dir_x * 0.1;
-		cub->map.cam.y -= cub->map.cam.dir_y * 0.1;
-	}
-	else if (keycode == MOVE_RIGHT)
-	{
-		cub->map.cam.x -= cub->map.cam.dir_x * 0.1;
-		cub->map.cam.y += cub->map.cam.dir_y * 0.1;
+		if (cub->map.map_array[(int)(cub->map.cam.x - cub->map.cam.dir_x * SPEED)][(int)cub->map.cam.y] != '1' && (int)(cub->map.cam.x + cub->map.cam.dir_x * SPEED) >= 0)
+			cub->map.cam.x -= cub->map.cam.dir_x * SPEED;
+		if (cub->map.map_array[(int)cub->map.cam.x][(int)(cub->map.cam.y - cub->map.cam.dir_y * SPEED)] != '1' && (int)(cub->map.cam.y + cub->map.cam.dir_y * SPEED) >= 0)
+			cub->map.cam.y -= cub->map.cam.dir_y * SPEED;
 	}
 	else if (keycode == ROTATE_LEFT)
 		rotate_L(cub);

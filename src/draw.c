@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 16:34:31 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:28:40 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	render_horizon(t_cub *cub)
 int	render(t_cub *cub)
 {
 	t_raycast ray;
+
+	printf("Debug:\nPos: (%f, %f)\nDir: (%f, %f)\nPlane: (%f, %f)", cub->map.cam.x, cub->map.cam.y, cub->map.cam.dir_x, cub->map.cam.dir_y, cub->map.cam.plane_x, cub->map.cam.plane_y);
 	render_horizon(cub);
 	raycast(cub, &ray);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,

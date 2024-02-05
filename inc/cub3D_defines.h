@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 16:45:20 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:30:26 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # define WIN_HEIGHT 720
 # define X 0
 # define Y 1
+# define ROT_SPEED 0.05
+# define SPEED 0.05
 
 # ifndef MAC_OS
 #  define ESCAPE 65307
-#  define ROTATE_LEFT 101
-#  define ROTATE_RIGHT 113
 #  define MOVE_FW 119
 #  define MOVE_BK 115
-#  define MOVE_LEFT 97
-#  define MOVE_RIGHT 100
+#  define ROTATE_RIGHT 97
+#  define ROTATE_LEFT 100
 #  define ZOOM_OUT 120
 #  define ZOOM_IN 122
 #  define RESET_CAM 114
@@ -34,12 +34,10 @@
 #  define TOGGLE_HELP 104
 # else
 #  define ESCAPE 53
-#  define ROTATE_LEFT 14
-#  define ROTATE_RIGHT 12
 #  define MOVE_FW 13
 #  define MOVE_BK 1
-#  define MOVE_LEFT 0
-#  define MOVE_RIGHT 2
+#  define ROTATE_RIGHT 0
+#  define ROTATE_LEFT 2
 #  define ZOOM_OUT 7
 #  define ZOOM_IN 6
 #  define RESET_CAM 15
