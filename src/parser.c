@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:40:55 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/06 14:05:14 by sacorder         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:52:40 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static int	ft_get_color(char *str)
 	color = 0;
 	str += 2;
 	i = -1;
-	ft_printf("color input: %s\n", str);
 	while (str[++i])
 		if (str[i] != ',' && !ft_isdigit(str[i]))
 			ft_error_exit(INV_CLR_MSG, 1);
@@ -238,7 +237,16 @@ static void	ft_check_map(t_map *map)
 			if (map->map_array[i][j] != ' ' && !ft_strchr(VLID_CHARS, map->map_array[i][j]))
 				ft_error_exit(INV_MAP_MSG, 1);
 			if (ft_strchr(PLAYER_CHARS, map->map_array[i][j]))
+			{
+				map->cam.x = (double) (i + 1);
+				map->cam.y= (double) (j + 1);
+				map->cam.dir_x = -1;
+				map->cam.dir_y = 0;
+				map->cam.plane_x = 0;
+				map->cam.plane_y = 0.66;
+				map->map_array[i][j] = '0';
 				++ctr;
+			}
 		}
 	}
 	if (ctr != 1)
@@ -258,10 +266,10 @@ void	ft_parse_map(t_map *map, int argc, char **argv)
 	file = ft_load_file(argv[1]);
 	if (ft_load_map(file, map))
 		ft_error_exit(INV_MAP_MSG, 1);
-	int i = -1;
+	/*int i = -1;
 	while (map->map_array[++i])
 		ft_printf("%s\n", map->map_array[i]);
-	ft_printf("Colors : ceiling: %i, floor: %i \n", map->ceiling_color, map->floor_color);/*
+	ft_printf("Colors : ceiling: %i, floor: %i \n", map->ceiling_color, map->floor_color);
 	ft_printf("Textures paths : NO: %s \nSO: %s \nWE: %s \nEA: %s \n", map->text_paths[NO], map->text_paths[SO], map->text_paths[WE] ,map->text_paths[EA]); */
 	ft_free_array(file);
 	ft_check_map(map);
