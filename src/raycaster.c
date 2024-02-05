@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:13:00 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 16:49:33 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:19:35 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ void	raycast(t_cub *cub, t_raycast *ray)
 			ray->line_start = 0;
 		if (ray->line_end < 0)
 			ray->line_end = 0;
-		img_ver_line(&cub->win_img, ray->x, ray->line_start, ray->line_end, 0xffffff);
+		img_ver_line(&cub->win_img, ray->x, ray->line_start, ray->line_end, 0xff0000);
 	}
 }
