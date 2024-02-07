@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:40:55 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/13 19:52:40 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:27:10 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ static void	ft_check_closed_map(t_map *map)
 	}
 }
 
-static void	ft_check_map(t_map *map)
+static void	ft_check_map(t_map *map, t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -238,12 +238,37 @@ static void	ft_check_map(t_map *map)
 				ft_error_exit(INV_MAP_MSG, 1);
 			if (ft_strchr(PLAYER_CHARS, map->map_array[i][j]))
 			{
-				map->cam.x = (double) (i + 1);
-				map->cam.y= (double) (j + 1);
-				map->cam.dir_x = -1;
-				map->cam.dir_y = 0;
-				map->cam.plane_x = 0;
-				map->cam.plane_y = 0.66;
+				map->cam.y = ((double) (i)) + 0.5;
+				map->cam.x = ((double) (j)) + 0.5;
+				if (map->map_array[i][j] == 'N')
+				{
+					map->cam.dir_x = 0;
+					map->cam.dir_y = -1;
+					map->cam.plane_x = 0.66;
+					map->cam.plane_y = 0.00;
+				}
+				if (map->map_array[i][j] == 'S')
+				{
+					map->cam.dir_x = 0;
+					map->cam.dir_y = 1;
+					map->cam.plane_x = -0.66;
+					map->cam.plane_y = 0.00;
+				}
+				if (map->map_array[i][j] == 'E')
+				{
+					map->cam.dir_x = 1;
+					map->cam.dir_y = 0;
+					map->cam.plane_x = 0;
+					map->cam.plane_y = 0.66;
+				}
+				if (map->map_array[i][j] == 'W')
+				{
+					map->cam.dir_x = -1;
+					map->cam.dir_y = 0;
+					map->cam.plane_x = 0;
+					map->cam.plane_y = -0.66;
+				}
+				(void) cub;
 				map->map_array[i][j] = '0';
 				++ctr;
 			}
@@ -254,7 +279,7 @@ static void	ft_check_map(t_map *map)
 	ft_check_closed_map(map);
 }
 
-void	ft_parse_map(t_map *map, int argc, char **argv)
+void	ft_parse_map(t_map *map, int argc, char **argv, t_cub *cub)
 {
 	char	**file;
 	
@@ -272,5 +297,5 @@ void	ft_parse_map(t_map *map, int argc, char **argv)
 	ft_printf("Colors : ceiling: %i, floor: %i \n", map->ceiling_color, map->floor_color);
 	ft_printf("Textures paths : NO: %s \nSO: %s \nWE: %s \nEA: %s \n", map->text_paths[NO], map->text_paths[SO], map->text_paths[WE] ,map->text_paths[EA]); */
 	ft_free_array(file);
-	ft_check_map(map);
+	ft_check_map(map, cub);
 }

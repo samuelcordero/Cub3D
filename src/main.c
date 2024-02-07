@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:11:52 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 16:33:50 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:58:32 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	cub.mlx = mlx_init();
 	if (!cub.mlx)
 		exit(1);
-	ft_parse_map(&cub.map, argc, argv);
+	ft_parse_map(&cub.map, argc, argv, &cub);
 	cub.win_ptr = mlx_new_window(cub.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	if (!cub.win_ptr)
 		exit(1);
