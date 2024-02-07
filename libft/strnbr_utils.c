@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:37:58 by sacorder          #+#    #+#             */
-/*   Updated: 2023/05/01 15:23:02 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:56:34 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_put_unsigned_nbr_base(unsigned long nbr, char *base, int pointer_type)
 
 	res = 0;
 	if (!pointer_type)
-	{	
+	{
 		if ((long) nbr == LONG_MIN)
 		{
 			if (write(1, "0", 1) == -1)
