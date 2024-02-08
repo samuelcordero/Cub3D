@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/05 17:30:26 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:04:19 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_cub
 	void	*mlx;
 	void	*win_ptr;
 	t_img	win_img;
+	t_img	textures[4];
 }	t_cub;
 
 //ERROR MESSAGES

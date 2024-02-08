@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:29:48 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 12:37:12 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:04:45 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,6 @@ int	hook_exit(t_cub *cub)
 	mlx_destroy_window(cub->mlx, cub->win_ptr);
 	exit(0);
 	return (0);
-}
-
-void	rotate_L(t_cub *cub, float angle)
-{
-	cub->map.cam.oldDirX = cub->map.cam.dir_x;
-	cub->map.cam.dir_x = cub->map.cam.dir_x * cos(angle) - cub->map.cam.dir_y * sin(angle);
-	cub->map.cam.dir_y = cub->map.cam.oldDirX * sin(angle) + cub->map.cam.dir_y * cos(angle);
-	cub->map.cam.oldPlaneX = cub->map.cam.plane_x;
-	cub->map.cam.plane_x = cub->map.cam.plane_x * cos(angle) - cub->map.cam.plane_y * sin(angle);
-	cub->map.cam.plane_y = cub->map.cam.oldPlaneX * sin(angle) + cub->map.cam.plane_y * cos(angle);
-}
-
-void	rotate_R(t_cub *cub, float angle)
-{
-	cub->map.cam.oldDirX = cub->map.cam.dir_x;
-	cub->map.cam.dir_x = cub->map.cam.dir_x * cos(-angle) - cub->map.cam.dir_y * sin(-angle);
-	cub->map.cam.dir_y = cub->map.cam.oldDirX * sin(-angle) + cub->map.cam.dir_y * cos(-angle);
-	cub->map.cam.oldPlaneX = cub->map.cam.plane_x;
-	cub->map.cam.plane_x = cub->map.cam.plane_x * cos(-angle) - cub->map.cam.plane_y * sin(-angle);
-	cub->map.cam.plane_y = cub->map.cam.oldPlaneX * sin(-angle) + cub->map.cam.plane_y * cos(-angle);
 }
 
 void	ft_keyhooks(int keycode, t_cub *cub)
@@ -60,9 +40,9 @@ void	ft_keyhooks(int keycode, t_cub *cub)
 			cub->map.cam.y -= cub->map.cam.dir_y * SPEED;
 	}
 	else if (keycode == ROTATE_LEFT)
-		rotate_L(cub, ROT_SPEED);
+		rotate(cub, ROT_SPEED);
 	else if (keycode == ROTATE_RIGHT)
-		rotate_R(cub, ROT_SPEED);
+		rotate(cub, -ROT_SPEED);
 }
 
 int	ft_input_hook(int keycode, t_cub *cub)

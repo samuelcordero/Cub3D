@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:25:02 by sacorder          #+#    #+#             */
-/*   Updated: 2023/11/05 18:40:19 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:04:55 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ void	ft_free_array(char **array)
 		++i;
 	}
 	free(array);
+}
+
+void	rotate(t_cub *cub, float angle)
+{
+	cub->map.cam.oldDirX = cub->map.cam.dir_x;
+	cub->map.cam.dir_x = cub->map.cam.dir_x * cos(angle) - cub->map.cam.dir_y * sin(angle);
+	cub->map.cam.dir_y = cub->map.cam.oldDirX * sin(angle) + cub->map.cam.dir_y * cos(angle);
+	cub->map.cam.oldPlaneX = cub->map.cam.plane_x;
+	cub->map.cam.plane_x = cub->map.cam.plane_x * cos(angle) - cub->map.cam.plane_y * sin(angle);
+	cub->map.cam.plane_y = cub->map.cam.oldPlaneX * sin(angle) + cub->map.cam.plane_y * cos(angle);
 }

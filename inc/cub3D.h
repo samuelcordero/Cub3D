@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 11:58:24 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:06:40 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,15 @@ void	ft_parse_map(t_map *map, int argc, char **argv, t_cub *cub);
 
 void	raycast(t_cub *cub, t_raycast *ray);
 
+//textures.c
+
+int		ft_load_textures(t_cub *cub);
+void	ft_exit_text_err();
+
 //utils.c
 
 void	ft_error_exit(char *msg, int exitcode);
 void	ft_free_array(char **array);
-void	rotate_L(t_cub *cub, float angle);
-void	rotate_R(t_cub *cub, float angle);
+void	rotate(t_cub *cub, float angle);
 
 #endif
