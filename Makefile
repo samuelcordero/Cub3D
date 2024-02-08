@@ -7,6 +7,7 @@ SRC = src/main.c \
 	  src/draw.c \
 	  src/hooks.c \
 	  src/parser.c \
+	  src/textures.c \
 	  src/utils.c
 OBJ = $(SRC:.c=.o)
 RM=/bin/rm -f
