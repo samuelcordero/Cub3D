@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:13:00 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 12:40:14 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:39:39 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ static void	if_else1(t_raycast *ray)
 
 void	raycast(t_cub *cub, t_raycast *ray)
 {
+	int	color;
+
 	ray->x = -1;
 	while (++ray->x < WIN_WIDTH)
 	{
+		color = 0xffffff;
 		init(cub, ray);
 		if_else1(ray);
 		if_else2(cub, ray);
@@ -97,6 +100,8 @@ void	raycast(t_cub *cub, t_raycast *ray)
 			ray->line_start = 0;
 		if (ray->line_end < 0)
 			ray->line_end = 0;
-		img_ver_line(&cub->win_img, ray->x, ray->line_start, ray->line_end, 0xffff00);
+		if (ray->side)
+			color = 0xe0e0e0;
+		img_ver_line(&cub->win_img, ray->x, ray->line_start, ray->line_end, color);
 	}
 }

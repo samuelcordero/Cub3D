@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 14:06:40 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:40:16 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	raycast(t_cub *cub, t_raycast *ray);
 
 int		ft_load_textures(t_cub *cub);
 void	ft_exit_text_err();
+t_img	*get_texture(t_cub *cub, t_raycast *ray);
 
 //utils.c
 

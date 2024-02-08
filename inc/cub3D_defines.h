@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 14:04:19 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:42:15 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		heigth;
 }	t_img;
 
 typedef struct s_cam
