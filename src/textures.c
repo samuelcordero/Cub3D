@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:32:21 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 19:48:17 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:20:13 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_load_textures(t_cub *cub)
 {
-	cub->textures[NO].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[NO], cub->textures[NO].width, cub->textures[NO].heigth);
-	cub->textures[SO].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[SO], cub->textures[SO].width, cub->textures[SO].heigth);
-	cub->textures[EA].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[EA], cub->textures[EA].width, cub->textures[EA].heigth);
-	cub->textures[WE].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[WE], cub->textures[WE].width, cub->textures[WE].heigth);
+	cub->textures[NO].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[NO], &cub->textures[NO].width, &cub->textures[NO].heigth);
+	cub->textures[SO].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[SO], &cub->textures[SO].width, &cub->textures[SO].heigth);
+	cub->textures[EA].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[EA], &cub->textures[EA].width, &cub->textures[EA].heigth);
+	cub->textures[WE].mlx_img = mlx_xpm_file_to_image(cub->mlx, cub->map.text_paths[WE], &cub->textures[WE].width, &cub->textures[WE].heigth);
 	if (!cub->textures[NO].mlx_img || !cub->textures[SO].mlx_img || !cub->textures[WE].mlx_img || !cub->textures[EA].mlx_img)
 		return (1);
 	cub->textures[NO].addr = mlx_get_data_addr(cub->textures[NO].mlx_img, &cub->textures[NO].bpp, &cub->textures[NO].line_len, &cub->textures[NO].endian);
@@ -57,6 +57,6 @@ t_img	*get_texture(t_cub *cub, t_raycast *ray)
 		return (&cub->textures[EA]);
 	}
 	if (ray->raydir[Y] > 0)
-		return (&cub->textures[NO]);
+		return (&cub->textures[SO]);
 	return (&cub->textures[NO]);
 }

@@ -56,7 +56,7 @@ clean:
 
 fclean: clean
 	@make fclean -C ./libft
-	@make clean -C ./$(MINILIB_PATH)
+	@make clean -sC ./$(MINILIB_PATH)
 	$(RM) $(NAME)
 
 re:: fclean
