@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 23:55:36 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:58:42 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	}
 }
 
-void	img_ver_line(t_img *img, int x, int y1, int y2, int color)
+void	img_ver_line(t_cub *cub, t_raycast *ray)
 {
-	int	y;
+	int		y;
+	t_img	*txtr;
 
-	y = y1 - 1;
+	y = ray->line_start - 1;
 	if (y < 0)
 		y = 0;
-	while (++y < y2 && y < WIN_HEIGHT)
-		img_pix_put(img, x, y, color);
+	txtr = get_texture(cub, ray);
+	while (++y < ray->line_end && y < WIN_HEIGHT)
+		img_pix_put(&cub->win_img, ray->x, y, get_color_from_text(cub, ray, y, txtr));
 }
 
 static void	render_horizon(t_cub *cub)
@@ -68,10 +70,18 @@ int	render(t_cub *cub)
 {
 	t_raycast ray;
 
-	printf("Debug:\nPos: (%f, %f)\nDir: (%f, %f)\nPlane: (%f, %f)\n", cub->map.cam.x, cub->map.cam.y, cub->map.cam.dir_x, cub->map.cam.dir_y, cub->map.cam.plane_x, cub->map.cam.plane_y);
+	//printf("Debug:\nPos: (%f, %f)\nDir: (%f, %f)\nPlane: (%f, %f)\n", cub->map.cam.x, cub->map.cam.y, cub->map.cam.dir_x, cub->map.cam.dir_y, cub->map.cam.plane_x, cub->map.cam.plane_y);
 	render_horizon(cub);
 	raycast(cub, &ray);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
 			cub->win_img.mlx_img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
+			cub->textures[0].mlx_img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
+			cub->textures[1].mlx_img, 128, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
+			cub->textures[2].mlx_img, 256, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
+			cub->textures[3].mlx_img, 384, 0);
 	return (0);
 }

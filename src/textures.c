@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:32:21 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/09 19:20:13 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:45:57 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,48 @@ t_img	*get_texture(t_cub *cub, t_raycast *ray)
 {
 	if (ray->side)
 	{
-		if (ray->raydir[X] > 0)
-			return (&cub->textures[WE]);
-		return (&cub->textures[EA]);
+		if (ray->raydir[Y] > 0)
+			return (&cub->textures[SO]);
+		return (&cub->textures[NO]);
 	}
-	if (ray->raydir[Y] > 0)
-		return (&cub->textures[SO]);
-	return (&cub->textures[NO]);
+	if (ray->raydir[X] > 0)
+		return (&cub->textures[EA]);
+	return (&cub->textures[WE]);
+}
+
+int		get_color_from_text(t_cub *cub, t_raycast *ray, int y, t_img *txtr)
+{
+	char	*pixel;
+	int		color;
+	int		i;
+	int		h;
+	int		x;
+	double	rel_x;
+	
+	color = 0;
+	i = 3;
+	h = ((double)(y - ray->line_start) / (double)(ray->line_end - ray->line_start)) * (txtr->heigth - 1);
+	if (ray->side)
+		rel_x = cub->map.cam.x + ray->side_dist[X];
+	else
+		rel_x = cub->map.cam.y + ray->side_dist[Y];
+	if (rel_x < 0)
+		rel_x *= -1;
+	rel_x -= (int)rel_x;
+	x = rel_x * txtr->width;
+	pixel = txtr->addr + (h * txtr->line_len + x * (txtr->bpp / 8));
+	(void)cub;
+	while (--i >= 0)
+	{
+		if (txtr->endian != 0)
+		{
+			color <<= 8;
+			color |= *(unsigned char *)pixel;
+
+		}
+		else
+			color |= (*(unsigned char *)pixel << (i * 8));
+		++pixel;
+	}
+	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 19:40:16 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:34:54 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 //draw.c
 
 void	img_pix_put(t_img *img, int x, int y, int color);
-void	img_ver_line(t_img *img, int x, int y1, int y2, int color);
+void	img_ver_line(t_cub *cub, t_raycast *ray);
 int		render(t_cub *cub);
+
 //hooks.c
 
 int		hook_exit(t_cub *cub);
@@ -43,6 +44,7 @@ void	raycast(t_cub *cub, t_raycast *ray);
 int		ft_load_textures(t_cub *cub);
 void	ft_exit_text_err();
 t_img	*get_texture(t_cub *cub, t_raycast *ray);
+int		get_color_from_text(t_cub *cub, t_raycast *ray, int y, t_img *txtr);
 
 //utils.c
 
