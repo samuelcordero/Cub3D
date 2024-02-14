@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:29:48 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 14:04:45 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:07:53 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ void	ft_keyhooks(int keycode, t_cub *cub)
 		rotate(cub, ROT_SPEED);
 	else if (keycode == ROTATE_RIGHT)
 		rotate(cub, -ROT_SPEED);
+}
+
+int	ft_mouse_hook(int x, int y, t_cub *cub)
+{
+	if (y != -1)
+		rotate(cub, (float) (x - cub->prev_mouse_x) / (double) (WIN_WIDTH / 16));
+	cub->prev_mouse_x = x;
+	return (0);
 }
 
 int	ft_input_hook(int keycode, t_cub *cub)

@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 02:29:09 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:02:54 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		render(t_cub *cub);
 //hooks.c
 
 int		hook_exit(t_cub *cub);
+int		ft_mouse_hook(int x, int y, t_cub *cub);
 int		ft_input_hook(int keycode, t_cub *cub);
 
 //parser.c
