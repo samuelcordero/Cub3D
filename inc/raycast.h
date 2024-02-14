@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:21:19 by agserran          #+#    #+#             */
-/*   Updated: 2024/02/05 16:24:01 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:04:55 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_raycast{
 	int		step[2];
 	int		line_start;
 	int		line_end;
-}t_raycast;
+}	t_raycast;
 
 
 #endif
