@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:32:21 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 02:03:19 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:29:26 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,13 @@ t_img	*get_texture(t_cub *cub, t_raycast *ray)
 	return (&cub->textures[WE]);
 }
 
-int		get_color_from_text(t_cub *cub, t_raycast *ray, int y, t_img *txtr)
+int		get_color_from_text(t_raycast *ray, int y, t_img *txtr)
 {
 	unsigned int	color;
 	int				h;
-	int				x;
-	double			rel_x;
 	
 	color = 0;
 	h = ((double)(y - ray->line_start) / (double)(ray->line_end - ray->line_start)) * (txtr->heigth - 1);
-	if (ray->side)
-		rel_x = cub->map.cam.x + ray->raydir[X] * ray->perp_dist;
-	else
-		rel_x = cub->map.cam.y + ray->raydir[Y] * ray->perp_dist;
-	rel_x -= (int) rel_x;
-	x = rel_x * (double)txtr->width;
-	if ((!ray->side && ray->raydir[X] > 0) || (ray->side && ray->raydir[Y] < 0))
-		x = txtr->width - x - 1;
-	color = *(unsigned int *)(txtr->addr + (h * txtr->line_len + x * (txtr->bpp / 8)));
+	color = *(unsigned int *)(txtr->addr + (h * txtr->line_len + ray->txtr_x * (txtr->bpp / 8)));
 	return (color);
 }

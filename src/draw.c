@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/10 18:58:42 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:32:26 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,16 @@ void	img_ver_line(t_cub *cub, t_raycast *ray)
 	if (y < 0)
 		y = 0;
 	txtr = get_texture(cub, ray);
+	if (ray->side)
+		ray->rel_x = cub->map.cam.x + ray->raydir[X] * ray->perp_dist;
+	else
+		ray->rel_x = cub->map.cam.y + ray->raydir[Y] * ray->perp_dist;
+	ray->rel_x -= (int) ray->rel_x;
+	ray->txtr_x = ray->rel_x * (double)txtr->width;
+	if ((!ray->side && ray->raydir[X] > 0) || (ray->side && ray->raydir[Y] < 0))
+		ray->txtr_x = txtr->width - ray->txtr_x - 1;
 	while (++y < ray->line_end && y < WIN_HEIGHT)
-		img_pix_put(&cub->win_img, ray->x, y, get_color_from_text(cub, ray, y, txtr));
+		img_pix_put(&cub->win_img, ray->x, y, get_color_from_text(ray, y, txtr));
 }
 
 static void	render_horizon(t_cub *cub)
@@ -75,13 +83,5 @@ int	render(t_cub *cub)
 	raycast(cub, &ray);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
 			cub->win_img.mlx_img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
-			cub->textures[0].mlx_img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
-			cub->textures[1].mlx_img, 128, 0);
-	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
-			cub->textures[2].mlx_img, 256, 0);
-	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
-			cub->textures[3].mlx_img, 384, 0);
 	return (0);
 }

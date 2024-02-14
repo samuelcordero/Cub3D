@@ -6,14 +6,14 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 19:42:15 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:31:20 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 1600
+# define WIN_HEIGHT 900
 # define X 0
 # define Y 1
 # define ROT_SPEED 0.05
