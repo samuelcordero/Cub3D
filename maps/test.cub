@@ -1,7 +1,7 @@
-NO ./test_textures/brick.xpm
-SO ./test_textures/dirt.xpm
+NO ./test_textures/metal_3.xpm
+SO ./test_textures/metal_2.xpm
 WE ./test_textures/metal.xpm
-EA ./test_textures/wood.xpm
+EA ./test_textures/stone_tile.xpm
 
 F 120,120,0
 C 0,0,255
