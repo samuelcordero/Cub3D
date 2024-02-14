@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:13:00 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 12:40:14 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:09:46 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	colision_detector(t_cub *cub, t_raycast *ray)
 }
 static void	if_else2(t_cub *cub, t_raycast *ray)
 {
-	if(ray->raydir[X] < 0)
+	if (ray->raydir[X] < 0)
 	{
 		ray->step[X] = -1;
 		ray->side_dist[X] = (cub->map.cam.x - ray->map_pos[X]) * ray->delta_dist[X];
@@ -52,7 +52,7 @@ static void	if_else2(t_cub *cub, t_raycast *ray)
 		ray->step[X] = 1;
 		ray->side_dist[X] = (ray->map_pos[X] + 1.0 - cub->map.cam.x) * ray->delta_dist[X];
 	}
-	if(ray->raydir[Y] < 0)
+	if (ray->raydir[Y] < 0)
 	{
 		ray->step[Y] = -1;
 		ray->side_dist[Y] = (cub->map.cam.y - ray->map_pos[Y]) * ray->delta_dist[Y];
@@ -89,14 +89,12 @@ void	raycast(t_cub *cub, t_raycast *ray)
 		if (ray->side)
 			ray->perp_dist = ray->side_dist[Y] - ray->delta_dist[Y];
 		else
-		ray->perp_dist = ray->side_dist[X] - ray->delta_dist[X];
+			ray->perp_dist = ray->side_dist[X] - ray->delta_dist[X];
 		ray->line_height = (int)(WIN_HEIGHT / ray->perp_dist);
 		ray->line_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 		ray->line_end = ray->line_height / 2 + WIN_HEIGHT / 2;
-		if (ray->line_start < 0)
-			ray->line_start = 0;
 		if (ray->line_end < 0)
 			ray->line_end = 0;
-		img_ver_line(&cub->win_img, ray->x, ray->line_start, ray->line_end, 0xffff00);
+		img_ver_line(cub, ray);
 	}
 }

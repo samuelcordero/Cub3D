@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:40:55 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/07 12:27:10 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:22:04 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,25 +109,25 @@ static int	ft_load_map(char **file, t_map *map)
 	{
 		if (ft_strncmp(file[row], "NO ", 3) == 0)
 		{
-			map->text_paths[NO] = ft_strdup(file[row]);
+			map->text_paths[NO] = ft_strdup(file[row] + 3);
 			ft_delete_row(file, row);
 			++ctr;
 		}
 		else if (ft_strncmp(file[row], "SO ", 3) == 0)
 		{
-			map->text_paths[SO] = ft_strdup(file[row]);
+			map->text_paths[SO] = ft_strdup(file[row] + 3);
 			ft_delete_row(file, row);
 			++ctr;
 		}
 		else if (ft_strncmp(file[row], "WE ", 3) == 0)
 		{
-			map->text_paths[WE] = ft_strdup(file[row]);
+			map->text_paths[WE] = ft_strdup(file[row] + 3);
 			ft_delete_row(file, row);
 			++ctr;
 		}
 		else if (ft_strncmp(file[row], "EA ", 3) == 0)
 		{
-			map->text_paths[EA] = ft_strdup(file[row]);
+			map->text_paths[EA] = ft_strdup(file[row] + 3);
 			ft_delete_row(file, row);
 			++ctr;
 		}

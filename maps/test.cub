@@ -1,9 +1,9 @@
-NO ./ruta_a_la_textura_norte
-SO ./ruta_a_la_textura_sur
-WE ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
+NO ./test_textures/brick.xpm
+SO ./test_textures/dirt.xpm
+WE ./test_textures/metal.xpm
+EA ./test_textures/wood.xpm
 
-F 255,20,255
+F 120,120,0
 C 0,0,255
 
 

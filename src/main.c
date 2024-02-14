@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:11:52 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 14:06:08 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:14:25 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	if (!cub.mlx)
 		exit(1);
 	ft_parse_map(&cub.map, argc, argv, &cub);
-	if (ft_load_textures(&cub))
+ 	if (ft_load_textures(&cub))
 		ft_exit_text_err();
 	cub.win_ptr = mlx_new_window(cub.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	if (!cub.win_ptr)
