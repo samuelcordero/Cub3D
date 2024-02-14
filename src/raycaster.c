@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:13:00 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/10 19:09:50 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:09:46 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void	raycast(t_cub *cub, t_raycast *ray)
 		ray->line_height = (int)(WIN_HEIGHT / ray->perp_dist);
 		ray->line_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 		ray->line_end = ray->line_height / 2 + WIN_HEIGHT / 2;
-		if (ray->line_start < 0)
-			ray->line_start = 0;
 		if (ray->line_end < 0)
 			ray->line_end = 0;
 		img_ver_line(cub, ray);
