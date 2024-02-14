@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:11:52 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 15:05:56 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:52:28 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(cub.mlx, &render, &cub);
 	mlx_hook(cub.win_ptr, 17, 0, &hook_exit, &cub);
 	mlx_hook(cub.win_ptr, 2, 1, &ft_input_hook, &cub);
-	mlx_hook(cub.win_ptr, 06, 1L << 6, ft_mouse_hook, &cub);
+	mlx_hook(cub.win_ptr, 6, 1L << 6, ft_mouse_hook, &cub);
+	mlx_mouse_hook(cub.win_ptr, &ft_ignore_clicks, &cub);
 	mlx_loop(cub.mlx);
 	free(cub.mlx);
 	return (0);

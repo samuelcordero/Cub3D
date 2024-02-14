@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:25:02 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/08 14:04:55 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:32:07 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_free_array(char **array)
 	free(array);
 }
 
-void	rotate(t_cub *cub, float angle)
+void	rotate(t_cub *cub, double angle)
 {
 	cub->map.cam.oldDirX = cub->map.cam.dir_x;
 	cub->map.cam.dir_x = cub->map.cam.dir_x * cos(angle) - cub->map.cam.dir_y * sin(angle);
