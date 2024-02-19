@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:25:02 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 15:32:07 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:58:28 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,14 @@ void	ft_free_array(char **array)
 
 void	rotate(t_cub *cub, double angle)
 {
-	cub->map.cam.oldDirX = cub->map.cam.dir_x;
-	cub->map.cam.dir_x = cub->map.cam.dir_x * cos(angle) - cub->map.cam.dir_y * sin(angle);
-	cub->map.cam.dir_y = cub->map.cam.oldDirX * sin(angle) + cub->map.cam.dir_y * cos(angle);
-	cub->map.cam.oldPlaneX = cub->map.cam.plane_x;
-	cub->map.cam.plane_x = cub->map.cam.plane_x * cos(angle) - cub->map.cam.plane_y * sin(angle);
-	cub->map.cam.plane_y = cub->map.cam.oldPlaneX * sin(angle) + cub->map.cam.plane_y * cos(angle);
+	cub->map.cam.olddirx = cub->map.cam.dir_x;
+	cub->map.cam.dir_x = cub->map.cam.dir_x
+		* cos(angle) - cub->map.cam.dir_y * sin(angle);
+	cub->map.cam.dir_y = cub->map.cam.olddirx
+		* sin(angle) + cub->map.cam.dir_y * cos(angle);
+	cub->map.cam.oldplanex = cub->map.cam.plane_x;
+	cub->map.cam.plane_x = cub->map.cam.plane_x
+		* cos(angle) - cub->map.cam.plane_y * sin(angle);
+	cub->map.cam.plane_y = cub->map.cam.oldplanex
+		* sin(angle) + cub->map.cam.plane_y * cos(angle);
 }

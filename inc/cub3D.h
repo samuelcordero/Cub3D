@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 15:50:45 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:57:01 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -35,7 +34,7 @@ int		ft_input_hook(int keycode, t_cub *cub);
 
 //parser.c
 
-void	ft_parse_map(t_map *map, int argc, char **argv, t_cub *cub);
+void	ft_parse_map(t_map *map, int argc, char **argv);
 
 //raycaster.c
 
@@ -44,7 +43,7 @@ void	raycast(t_cub *cub, t_raycast *ray);
 //textures.c
 
 int		ft_load_textures(t_cub *cub);
-void	ft_exit_text_err();
+void	ft_exit_text_err(void);
 t_img	*get_texture(t_cub *cub, t_raycast *ray);
 int		get_color_from_text(t_raycast *ray, int y, t_img *txtr);
 
@@ -53,5 +52,25 @@ int		get_color_from_text(t_raycast *ray, int y, t_img *txtr);
 void	ft_error_exit(char *msg, int exitcode);
 void	ft_free_array(char **array);
 void	rotate(t_cub *cub, double angle);
+
+//hooks_aux.c
+
+void	move_forward(t_cub *cub);
+void	move_back(t_cub *cub);
+
+//parser_aux.c
+
+void	copy_file(char *line, size_t size, int fd, char **res);
+void	parse_texture(t_map *map, char **file, int *row, int *ctr);
+
+//parser_aux2.c
+
+void	ft_check_top_map(t_map *map);
+void	ft_check_bottom_map(t_map *map);
+void	ft_check_closed_map(t_map *map);
+
+//parser_aux3.c
+
+void	map_runer(t_map *map, int *i, int *j, int *ctr);
 
 #endif

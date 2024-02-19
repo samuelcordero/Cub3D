@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 15:03:34 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:58:28 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define WIN_HEIGHT 900
 # define X 0
 # define Y 1
-# define ROT_SPEED 0.05
-# define SPEED 0.05
+# define ROT_SP 0.05
+# define SP 0.05
 
 # ifndef MAC_OS
 #  define ESCAPE 65307
@@ -47,7 +47,6 @@
 #  define TOGGLE_HELP 4
 # endif
 
-
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -67,8 +66,8 @@ typedef struct s_cam
 	double	plane_y;
 	double	dir_x;
 	double	dir_y;
-	double	oldDirX;
-	double	oldPlaneX;
+	double	olddirx;
+	double	oldplanex;
 }	t_cam;
 
 typedef struct s_map

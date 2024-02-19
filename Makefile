@@ -8,7 +8,11 @@ SRC = src/main.c \
 	  src/hooks.c \
 	  src/parser.c \
 	  src/textures.c \
-	  src/utils.c
+	  src/utils.c	\
+	  src/parser_aux.c \
+	  src/hooks_aux.c	\
+	  src/parser_aux2.c	\
+	  src/parser_aux3.c
 OBJ = $(SRC:.c=.o)
 RM=/bin/rm -f
 UNAME := $(shell uname -s)

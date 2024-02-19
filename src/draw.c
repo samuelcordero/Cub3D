@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:53:26 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/14 02:32:26 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:08:23 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	img_ver_line(t_cub *cub, t_raycast *ray)
 	if ((!ray->side && ray->raydir[X] > 0) || (ray->side && ray->raydir[Y] < 0))
 		ray->txtr_x = txtr->width - ray->txtr_x - 1;
 	while (++y < ray->line_end && y < WIN_HEIGHT)
-		img_pix_put(&cub->win_img, ray->x, y, get_color_from_text(ray, y, txtr));
+		img_pix_put(&cub->win_img, ray->x, y,
+			get_color_from_text(ray, y, txtr));
 }
 
 static void	render_horizon(t_cub *cub)
@@ -70,18 +71,16 @@ static void	render_horizon(t_cub *cub)
 			else
 				img_pix_put(&cub->win_img, j, i, cub->map.floor_color);
 		}
-			
 	}
 }
 
 int	render(t_cub *cub)
 {
-	t_raycast ray;
+	t_raycast	ray;
 
-	//printf("Debug:\nPos: (%f, %f)\nDir: (%f, %f)\nPlane: (%f, %f)\n", cub->map.cam.x, cub->map.cam.y, cub->map.cam.dir_x, cub->map.cam.dir_y, cub->map.cam.plane_x, cub->map.cam.plane_y);
 	render_horizon(cub);
 	raycast(cub, &ray);
 	mlx_put_image_to_window(cub->mlx, cub->win_ptr,
-			cub->win_img.mlx_img, 0, 0);
+		cub->win_img.mlx_img, 0, 0);
 	return (0);
 }
