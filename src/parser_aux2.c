@@ -6,54 +6,38 @@
 /*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:14:07 by agserran          #+#    #+#             */
-/*   Updated: 2024/02/20 15:18:38 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:07:20 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_check_top_map(t_map *map)
+static void	ft_check_surroundings(t_map *map, int x, int y)
 {
-	int	i;
-
-	i = -1;
-	while (map->map_array[0][++i])
-	{
-		if (map->map_array[0][i] != '1' && map->map_array[0][i] != ' ')
-			ft_error_exit(INV_MAP_MSG, 1);
-	}
+	if (x == 0 || y == 0 || !map->map_array[y + 1] || !map->map_array[y][x + 1]
+		|| (map->map_array[y][x + 1] != '1' && map->map_array[y][x + 1] != '2')
+		|| (map->map_array[y][x - 1] != '1' && map->map_array[y][x - 1] != '2'))
+		ft_error_exit(INV_MAP_MSG, 1);
+	if (!map->map_array[y - 1] || x >= (int)ft_strlen(map->map_array[y - 1])
+		|| (map->map_array[y - 1][x] != '1' && map->map_array[y - 1][x] != '2'))
+		ft_error_exit(INV_MAP_MSG, 1);
+	if (!map->map_array[y + 1] || x >= (int)ft_strlen(map->map_array[y + 1])
+		|| (map->map_array[y + 1][x] != '1' && map->map_array[y + 1][x] != '2'))
+		ft_error_exit(INV_MAP_MSG, 1);
 }
 
-void	ft_check_bottom_map(t_map *map)
+static void	ft_fill_reachable(t_map *map, int x, int y)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	while (map->map_array[j + 1])
-		++j;
-	i = -1;
-	while (map->map_array[j][++i])
-	{
-		if (map->map_array[j][i] != '1' && map->map_array[j][i] != ' ')
-			ft_error_exit(INV_MAP_MSG, 1);
-	}
-}
-
-static void	closed_aux(t_map *map, int *i, int *j)
-{
-	if (map->map_array[*i][*j] == '0' &&
-	(!ft_strchr(VLID_CHARS, map->map_array[*i][*j + 1])
-	|| !ft_strchr(VLID_CHARS, map->map_array[*i + 1][*j]) ||
-	!ft_strchr(VLID_CHARS, map->map_array[*i][*j - 1])
-		|| !ft_strchr(VLID_CHARS, map->map_array[*i - 1][*j])))
-		ft_error_exit(INV_MAP_MSG, 1);
-	if (ft_strchr(PLAYER_CHARS, map->map_array[*i][*j]) &&
-	(!ft_strchr(VLID_CHARS, map->map_array[*i][*j + 1])
-	|| !ft_strchr(VLID_CHARS, map->map_array[*i + 1][*j]) ||
-	!ft_strchr(VLID_CHARS, map->map_array[*i][*j - 1]) ||
-	!ft_strchr(VLID_CHARS, map->map_array[*i - 1][*j])))
-		ft_error_exit(INV_MAP_MSG, 1);
+	if (y >= 0 && map->map_array[y])
+		if (x < (int)ft_strlen(map->map_array[y])
+			&& map->map_array[y][x] && map->map_array[y][x] == '0')
+		{
+			map->map_array[y][x] = '2';
+			ft_fill_reachable(map, x + 1, y);
+			ft_fill_reachable(map, x - 1, y);
+			ft_fill_reachable(map, x, y + 1);
+			ft_fill_reachable(map, x, y - 1);
+		}
 }
 
 void	ft_check_closed_map(t_map *map)
@@ -61,16 +45,16 @@ void	ft_check_closed_map(t_map *map)
 	int	i;
 	int	j;
 
-	i = 0;
-	ft_check_top_map(map);
-	ft_check_bottom_map(map);
-	while (map->map_array[++i + 1])
+	i = -1;
+	map->map_array[(int)map->cam.y][(int)map->cam.x] = '0';
+	ft_fill_reachable(map, (int)map->cam.x, (int)map->cam.y);
+	while (map->map_array[++i])
 	{
-		j = 0 ;
-		if (map->map_array[i][0] != '1' ||
-		*(ft_strchr(map->map_array[i], '\0') - 1) != '1')
-			ft_error_exit(INV_MAP_MSG, 1);
-		while (map->map_array[i][++j + 1])
-			closed_aux(map, &i, &j);
+		j = -1;
+		while (map->map_array[i][++j])
+		{
+			if (map->map_array[i][j] == '2')
+				ft_check_surroundings(map, j, i);
+		}
 	}
 }
