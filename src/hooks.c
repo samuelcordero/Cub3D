@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:29:48 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/19 16:35:11 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:32:43 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ void	ft_keyhooks(int keycode, t_cub *cub)
 		move_forward(cub);
 	else if (keycode == MOVE_BK)
 		move_back(cub);
+	if (keycode == MOVE_LEFT)
+		move_left(cub);
+	else if (keycode == MOVE_RIGHT)
+		move_right(cub);
 	else if (keycode == ROTATE_LEFT)
-		rotate(cub, ROT_SP);
-	else if (keycode == ROTATE_RIGHT)
 		rotate(cub, -ROT_SP);
+	else if (keycode == ROTATE_RIGHT)
+		rotate(cub, ROT_SP);
 }
 
 int	ft_mouse_hook(int x, int y, t_cub *cub)

@@ -48,12 +48,12 @@ t_img	*get_texture(t_cub *cub, t_raycast *ray)
 	if (ray->side)
 	{
 		if (ray->raydir[Y] > 0)
-			return (&cub->textures[SO]);
-		return (&cub->textures[NO]);
+			return (&cub->textures[NO]);
+		return (&cub->textures[SO]);
 	}
 	if (ray->raydir[X] > 0)
-		return (&cub->textures[EA]);
-	return (&cub->textures[WE]);
+		return (&cub->textures[WE]);
+	return (&cub->textures[EA]);
 }
 
 int	get_color_from_text(t_raycast *ray, int y, t_img *txtr)

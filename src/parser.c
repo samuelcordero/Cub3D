@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:40:55 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/19 17:39:09 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:28:07 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ static int	ft_load_map(char **file, t_map *map)
 	row = 0;
 	ctr = 0;
 	while (file[row])
-	{
 		parse_texture(map, file, &row, &ctr);
-	}
 	if (ctr != 6)
 		ft_error_exit(NOT_ENOUGH_ATTR, 1);
 	row = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:07:15 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/19 17:57:01 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:25:43 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	rotate(t_cub *cub, double angle);
 
 void	move_forward(t_cub *cub);
 void	move_back(t_cub *cub);
+void	move_left(t_cub *cub);
+void	move_right(t_cub *cub);
 
 //parser_aux.c
 

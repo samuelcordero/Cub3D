@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_aux2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:14:07 by agserran          #+#    #+#             */
-/*   Updated: 2024/02/19 17:34:43 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:18:38 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	ft_check_closed_map(t_map *map)
 		*(ft_strchr(map->map_array[i], '\0') - 1) != '1')
 			ft_error_exit(INV_MAP_MSG, 1);
 		while (map->map_array[i][++j + 1])
-		{
 			closed_aux(map, &i, &j);
-		}
 	}
 }

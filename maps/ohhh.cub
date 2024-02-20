@@ -1,0 +1,31 @@
+NO ./test_textures/metal_3.xpm
+SO ./test_textures/metal_2.xpm
+WE ./test_textures/metal.xpm
+EA ./test_textures/stone_tile.xpm
+
+F 120,120,0
+C 0,0,255
+
+
+               1
+1
+1
+                      111
+1
+1
+1
+1
+1     1     1        1           1              1   1
+  1
+    1
+      1          1                                                                                111111
+1                                                                                                1000011  
+1                                                                                                1011001
+1                                                                                                100N101
+1                                                                                                 100001
+      1                                                                                           1111111
+                 111                 111                 111                 111                 111
+                1001                1001                1001                1001                1001
+                 111                 111                 111                 111                 111
+                                                1
+                 1                                  1

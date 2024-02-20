@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_aux.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:38:46 by agserran          #+#    #+#             */
-/*   Updated: 2024/02/19 17:12:49 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:15:56 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,20 @@ void	parse_texture(t_map *map, char **file, int *row, int *ctr)
 		copy_texture_path(&map->text_paths[WE], file, row, ctr);
 	else if (ft_strncmp(file[*row], "EA ", 3) == 0)
 		copy_texture_path(&map->text_paths[EA], file, row, ctr);
-	else if (ft_strncmp(file[*row], "C ", 2) == 0)
+	else if (!ft_strncmp(file[*row], "C ", 2)
+		|| !ft_strncmp(file[*row], "F ", 2))
 	{
-		map->ceiling_color = ft_get_color(file[*row]);
-		ft_delete_row(file, *row);
-		++*ctr;
-	}
-	else if (ft_strncmp(file[*row], "F ", 2) == 0)
-	{
-		map->floor_color = ft_get_color(file[*row]);
+		if (!ft_strncmp(file[*row], "F ", 2))
+			map->floor_color = ft_get_color(file[*row]);
+		else
+			map->ceiling_color = ft_get_color(file[*row]);
 		ft_delete_row(file, *row);
 		++*ctr;
 	}
 	else if (ft_strncmp(file[*row], "", 1) == 0)
 		ft_delete_row(file, *row);
+	else if (*ctr < 6 && ft_strncmp(file[*row], "", 1))
+		ft_error_exit(INV_MAP_MSG, 1);
 	else
 		++*row;
 }

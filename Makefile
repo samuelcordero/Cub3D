@@ -48,6 +48,7 @@ $(MINILIBX):
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(MINILIBX) $(LDFLAGS) -o $(NAME)
 
+bonus: all
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -74,4 +75,4 @@ asan:: re
 normi:
 	@norminette src inc libft
 
-.PHONY: all clean fclean re normi
+.PHONY: all clean fclean re normi bonus

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:13:00 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/19 17:59:24 by agserran         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:31:36 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	colision_detector(t_cub *cub, t_raycast *ray)
 	}
 }
 
-static void	if_else2(t_cub *cub, t_raycast *ray)
+static void	init_side_step(t_cub *cub, t_raycast *ray)
 {
 	if (ray->raydir[X] < 0)
 	{
@@ -70,7 +70,7 @@ static void	if_else2(t_cub *cub, t_raycast *ray)
 	}
 }
 
-static void	if_else1(t_raycast *ray)
+static void	init_delta(t_raycast *ray)
 {
 	if (ray->raydir[X] == 0)
 		ray->delta_dist[X] = 1e30;
@@ -89,8 +89,8 @@ void	raycast(t_cub *cub, t_raycast *ray)
 	while (++ray->x < WIN_WIDTH)
 	{
 		init(cub, ray);
-		if_else1(ray);
-		if_else2(cub, ray);
+		init_delta(ray);
+		init_side_step(cub, ray);
 		colision_detector(cub, ray);
 		if (ray->side)
 			ray->perp_dist = ray->side_dist[Y] - ray->delta_dist[Y];
