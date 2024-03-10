@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agserran <agserran@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 14:26:50 by sacorder          #+#    #+#             */
-/*   Updated: 2024/02/20 13:26:05 by agserran         ###   ########.fr       */
+/*   Updated: 2024/03/10 01:23:04 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 #  define ESCAPE 65307
 #  define MOVE_FW 119
 #  define MOVE_BK 115
-#  define MOVE_LEFT 100
-#  define MOVE_RIGHT 97
-#  define ROTATE_RIGHT 1
-#  define ROTATE_LEFT 2
+#  define MOVE_LEFT 97
+#  define MOVE_RIGHT 100
+#  define ROTATE_RIGHT 65363
+#  define ROTATE_LEFT 65361
 #  define ZOOM_OUT 120
 #  define ZOOM_IN 122
 #  define RESET_CAM 114
